@@ -33,6 +33,7 @@ func lengthOfLIS(nums []int) int {
 	res := 1
 
 	for i := 0; i < n; i++ {
+		// 初始化
 		dp[i] = 1
 
 		for j := 0; j < i; j++ {
