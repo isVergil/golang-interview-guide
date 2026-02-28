@@ -1,15 +1,27 @@
 {
+    // 1. 核心：开启主动提示。虽然你不想自动补全，但必须允许它“显示”出来
     "editor.quickSuggestions": {
-        "other": false,
+        "other": "on",     // 开启代码提示（变量、函数等）
         "comments": false,
-        "strings": false
+        "strings": true    // 建议开启，方便在字符串里写路径或特定参数
     },
-    "editor.suggestOnTriggerCharacters": false,
-    "editor.acceptSuggestionOnEnter": "off",
+
+    // 2. 核心：禁用 Tab 补全。这样按 Tab 就只是缩进，不会把提示填进去
     "editor.tabCompletion": "off",
-    "editor.wordBasedSuggestions": "off",
-    "editor.parameterHints.enabled": false,
-    "editor.hover.enabled": "off",
+
+    // 3. 关键：禁止回车（Enter）自动上屏。
+    // 这样提示框虽然在那，但你按回车只会换行，不会确认补全
+    "editor.acceptSuggestionOnEnter": "off",
+
+    // 4. 参数提示（核心需求）：开启函数参数列表提示
+    "editor.parameterHints.enabled": true,
+
+    // 5. 触发配置
+    "editor.suggestOnTriggerCharacters": true, // 输入 '.' 或 '(' 时触发提示
+    
+    // 6. 其他辅助
     "go.useLanguageServer": true,
-    "editor.inlineSuggest.enabled": false
+    "editor.wordBasedSuggestions": "off",      // 只显示代码逻辑提示，不显示单词重复提示
+    "editor.inlineSuggest.enabled": false,     // 禁用灰色的“行内预测”文本（Copilot 类提示）
+    "editor.hover.enabled": "on"               // 建议设为 true，这样鼠标悬停能看变量类型（不影响打字）
 }
