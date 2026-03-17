@@ -26,13 +26,7 @@ import (
 // 输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 // 输出：[8,9,9,9,0,0,0,1]
 
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
+
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	head := &ListNode{}

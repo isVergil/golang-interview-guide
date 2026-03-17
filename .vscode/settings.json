@@ -19,9 +19,16 @@
     // 5. 触发配置
     "editor.suggestOnTriggerCharacters": true, // 输入 '.' 或 '(' 时触发提示
     
-    // 6. 其他辅助
+    // 其他辅助
     "go.useLanguageServer": true,
     "editor.wordBasedSuggestions": "off",      // 只显示代码逻辑提示，不显示单词重复提示
     "editor.inlineSuggest.enabled": false,     // 禁用灰色的“行内预测”文本（Copilot 类提示）
-    "editor.hover.enabled": "on"               // 建议设为 true，这样鼠标悬停能看变量类型（不影响打字）
+    "editor.hover.enabled": "on",              // 建议设为 true，这样鼠标悬停能看变量类型（不影响打字）
+    "editor.suggestSelection": "recentlyUsedByPrefix",   //核心记忆功能：自动选中最近使用的建议
+    "editor.snippetSuggestions": "top",  // 控制代码片段的排序，不让它乱跳
+    "editor.quickSuggestions": {   // 细节优化：输入时自动显示建议，无需等待
+        "other": true,
+        "comments": false,
+        "strings": true
+    }
 }

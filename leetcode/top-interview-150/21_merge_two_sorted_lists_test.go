@@ -21,13 +21,7 @@ import (
 // 输入：l1 = [], l2 = [0]
 // 输出：[0]
 
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
+
 
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	head := &ListNode{}

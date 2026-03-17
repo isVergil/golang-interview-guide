@@ -24,18 +24,7 @@ import "testing"
 // 输出：false
 // 解释：链表中没有环。
 
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
-// 为了避免重复定义，假设 ListNode 已经在其他文件中定义
-// type ListNode struct {
-//     Val int
-//     Next *ListNode
-// }
+
 
 func hasCycle(head *ListNode) bool {
 	// 边界处理：如果链表为空或只有一个节点且无环
