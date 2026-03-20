@@ -1,0 +1,44 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: guide-mysql
+    restart: unless-stopped
+    ports:
+      - "13306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: guide_db
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb-buffer-pool-size=128M
+      - --slow-query-log=ON
+      - --long-query-time=1
+      - --log-queries-not-using-indexes=ON
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/mysql/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: guide-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "18080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql_data:
