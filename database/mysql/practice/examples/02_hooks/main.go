@@ -1,9 +1,3 @@
-// 02_hooks：GORM Hooks 生命周期演示
-//
-// Hooks 是 GORM 在 Create/Update/Delete/Query 前后自动调用的方法
-// 定义在 Model 上，适合做数据清洗、自动填充、审计日志
-//
-// 运行：cd practice && go run examples/02_hooks/main.go
 package main
 
 import (
@@ -19,6 +13,10 @@ import (
 	"mysql-practice/pkg/database"
 )
 
+// 02_hooks：GORM Hooks 生命周期演示
+//
+// Hooks 是 GORM 在 Create/Update/Delete/Query 前后自动调用的方法
+// 定义在 Model 上，适合做数据清洗、自动填充、审计日志
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)

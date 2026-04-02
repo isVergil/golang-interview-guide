@@ -1,9 +1,3 @@
-// 05_upsert：幂等写入（INSERT ON DUPLICATE KEY UPDATE）
-//
-// 场景：同步外部数据、消息消费去重、配置批量导入
-// 按唯一键冲突时更新，不重复插入
-//
-// 运行：cd practice && go run examples/05_upsert/main.go
 package main
 
 import (
@@ -16,6 +10,10 @@ import (
 	"mysql-practice/pkg/database"
 )
 
+// 05_upsert：幂等写入（INSERT ON DUPLICATE KEY UPDATE）
+//
+// 场景：同步外部数据、消息消费去重、配置批量导入
+// 按唯一键冲突时更新，不重复插入
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)

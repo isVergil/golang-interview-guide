@@ -1,0 +1,16 @@
+postgres:
+  host: 127.0.0.1
+  port: 15432
+  user: root
+  password: ${PG_PASSWORD:root}
+  dbname: guide_db
+  sslmode: disable
+
+  # 连接池
+  max_conns: 20
+  min_conns: 5
+  max_conn_lifetime: 3600    # 秒
+  max_conn_idle_time: 300    # 秒
+
+  # 超时（秒）
+  connect_timeout: 5

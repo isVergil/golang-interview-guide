@@ -1,9 +1,3 @@
-// 04_association：关联查询 Preload vs Joins
-//
-// Preload：两次查询，先查主表再查关联表（适合一对多）
-// Joins：单次 JOIN 查询（适合一对一 / 需要关联字段做 WHERE）
-//
-// 运行：cd practice && go run examples/04_association/main.go
 package main
 
 import (
@@ -17,6 +11,10 @@ import (
 	"mysql-practice/pkg/snowflake"
 )
 
+// 04_association：关联查询 Preload vs Joins
+//
+// Preload：两次查询，先查主表再查关联表（适合一对多）
+// Joins：单次 JOIN 查询（适合一对一 / 需要关联字段做 WHERE）
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)

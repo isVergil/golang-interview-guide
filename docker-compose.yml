@@ -40,5 +40,85 @@ services:
       mysql:
         condition: service_healthy
 
+  redis:
+    image: redis:7.2
+    container_name: guide-redis
+    restart: unless-stopped
+    ports:
+      - "16379:6379"
+    command:
+      - redis-server
+      - --requirepass
+      - root
+      - --maxmemory
+      - 128mb
+      - --maxmemory-policy
+      - allkeys-lru
+      - --appendonly
+      - "yes"
+      - --slowlog-log-slower-than
+      - "10000"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "root", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  redis-insight:
+    image: redis/redisinsight:latest
+    container_name: guide-redis-insight
+    restart: unless-stopped
+    ports:
+      - "18081:5540"
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16
+    container_name: guide-postgres
+    restart: unless-stopped
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: guide_db
+      TZ: Asia/Shanghai
+    command:
+      - postgres
+      - -c
+      - shared_buffers=128MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - log_min_duration_statement=1000
+      - -c
+      - log_statement=ddl
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d guide_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: guide-pgadmin
+    restart: unless-stopped
+    ports:
+      - "18082:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@guide.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   mysql_data:
+  redis_data:
+  postgres_data:

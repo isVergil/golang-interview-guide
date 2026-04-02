@@ -1,9 +1,3 @@
-// 03_scopes：GORM Scopes 可复用查询条件
-//
-// Scope 是一个 func(db *gorm.DB) *gorm.DB 函数
-// 可以链式组合，实现查询条件的复用和标准化
-//
-// 运行：cd practice && go run examples/03_scopes/main.go
 package main
 
 import (
@@ -16,6 +10,10 @@ import (
 	"mysql-practice/pkg/database"
 )
 
+// 03_scopes：GORM Scopes 可复用查询条件
+//
+// Scope 是一个 func(db *gorm.DB) *gorm.DB 函数
+// 可以链式组合，实现查询条件的复用和标准化
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)

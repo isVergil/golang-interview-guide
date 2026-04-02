@@ -1,9 +1,3 @@
-// 01_migrate：建库建表最佳实践
-//
-// 生产环境不用 AutoMigrate，用版本化 SQL 迁移
-// 本文件演示企业级 DDL 规范和 GORM 迁移技巧
-//
-// 运行：cd practice && go run examples/01_migrate/main.go
 package main
 
 import (
@@ -17,6 +11,10 @@ import (
 	"mysql-practice/pkg/database"
 )
 
+// 01_migrate：建库建表最佳实践
+//
+// 生产环境不用 AutoMigrate，用版本化 SQL 迁移
+// 本文件演示企业级 DDL 规范和 GORM 迁移技巧
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)

@@ -1,12 +1,3 @@
-// 09_transaction：事务与转账（悲观锁 FOR UPDATE）
-//
-// 演示 GORM 事务的标准用法：
-//   - db.Transaction() 闭包：返回 nil 自动 Commit，返回 error 自动 Rollback
-//   - FOR UPDATE 悲观锁：防止并发读到脏余额
-//   - gorm.Expr 原子更新：避免读-改-写竞态
-//   - DAO.WithTx(tx)：保证事务内操作走同一个连接
-//
-// 运行：cd practice && go run examples/09_transaction/main.go
 package main
 
 import (
@@ -22,6 +13,13 @@ import (
 	"mysql-practice/pkg/database"
 )
 
+// 09_transaction：事务与转账（悲观锁 FOR UPDATE）
+//
+// 演示 GORM 事务的标准用法：
+//   - db.Transaction() 闭包：返回 nil 自动 Commit，返回 error 自动 Rollback
+//   - FOR UPDATE 悲观锁：防止并发读到脏余额
+//   - gorm.Expr 原子更新：避免读-改-写竞态
+//   - DAO.WithTx(tx)：保证事务内操作走同一个连接
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)

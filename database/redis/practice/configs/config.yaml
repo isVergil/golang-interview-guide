@@ -1,0 +1,19 @@
+# Redis 连接配置
+redis:
+  # 连接信息
+  host: 127.0.0.1
+  port: 16379                       # docker-compose 映射端口
+  password: ${REDIS_PASSWORD:root}  # 支持环境变量覆盖，默认 root
+  db: 0                             # 默认使用 0 号库
+
+  # 连接池
+  pool_size: 100                    # 最大连接数（默认 runtime.GOMAXPROCS * 10）
+  min_idle_conns: 10                # 最小空闲连接数，避免突发流量时临时建连
+  max_idle_conns: 50                # 最大空闲连接数
+  conn_max_lifetime: 3600           # 连接最大存活时间（秒），防止使用长时间未刷新的连接
+  conn_max_idle_time: 600           # 空闲连接最大存活时间（秒）
+
+  # 超时
+  dial_timeout: 5                   # 建连超时（秒）
+  read_timeout: 3                   # 读超时（秒），根据最慢命令调整
+  write_timeout: 3                  # 写超时（秒）

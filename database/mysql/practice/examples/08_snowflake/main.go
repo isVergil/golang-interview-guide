@@ -1,9 +1,3 @@
-// 08_snowflake：雪花算法分布式 ID 演示
-//
-// 64 位 ID = 1 bit 符号 + 41 bits 时间戳 + 10 bits 机器ID + 12 bits 序列号
-// 特点：趋势递增、全局唯一、不依赖 DB、高性能（单节点 400w+/s）
-//
-// 运行：cd practice && go run examples/08_snowflake/main.go
 package main
 
 import (
@@ -18,6 +12,10 @@ import (
 	"mysql-practice/pkg/snowflake"
 )
 
+// 08_snowflake：雪花算法分布式 ID 演示
+//
+// 64 位 ID = 1 bit 符号 + 41 bits 时间戳 + 10 bits 机器ID + 12 bits 序列号
+// 特点：趋势递增、全局唯一、不依赖 DB、高性能（单节点 400w+/s）
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)

@@ -1,9 +1,3 @@
-// 07_aggregation：聚合查询 + Raw SQL
-//
-// GORM 的 Group/Having/Select 做聚合统计
-// 以及当 GORM 表达力不够时，直接用 Raw SQL
-//
-// 运行：cd practice && go run examples/07_aggregation/main.go
 package main
 
 import (
@@ -15,6 +9,10 @@ import (
 	"mysql-practice/pkg/database"
 )
 
+// 07_aggregation：聚合查询 + Raw SQL
+//
+// GORM 的 Group/Having/Select 做聚合统计
+// 以及当 GORM 表达力不够时，直接用 Raw SQL
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)

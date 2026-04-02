@@ -1,11 +1,3 @@
-// 06_optimistic_lock：乐观锁并发控制
-//
-// 乐观锁 vs 悲观锁：
-//
-//	乐观锁：不加锁，用 version 字段检测冲突，适合冲突率低的场景
-//	悲观锁：SELECT FOR UPDATE 加行锁，阻塞并发，适合冲突率高的场景
-//
-// 运行：cd practice && go run examples/06_optimistic_lock/main.go
 package main
 
 import (
@@ -20,6 +12,12 @@ import (
 	"mysql-practice/pkg/database"
 )
 
+// 06_optimistic_lock：乐观锁并发控制
+//
+// 乐观锁 vs 悲观锁：
+//
+//	乐观锁：不加锁，用 version 字段检测冲突，适合冲突率低的场景
+//	悲观锁：SELECT FOR UPDATE 加行锁，阻塞并发，适合冲突率高的场景
 func main() {
 	db := setup.MustSetup()
 	defer database.Close(db)
