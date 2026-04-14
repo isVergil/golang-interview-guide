@@ -1,12 +1,12 @@
 package top100liked
 
-// ListNode defines a singly-linked list.
+// ListNode Definition for singly-linked list.
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
-// TreeNode defines a binary tree node.
+// TreeNode Definition for a binary tree node.
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
