@@ -61,7 +61,7 @@ func invertTree1(root *TreeNode) *TreeNode {
 }
 
 // 辅助函数：层序遍历二叉树，用于验证结果
-func levelOrder(root *TreeNode) []int {
+func levelOrder1(root *TreeNode) []int {
 	if root == nil {
 		return nil
 	}
@@ -122,7 +122,7 @@ func TestInvertTree(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := levelOrder(invertTree(tt.root))
+			got := levelOrder1(invertTree(tt.root))
 			if len(got) != len(tt.expected) {
 				t.Errorf("invertTree() level order = %v, want %v", got, tt.expected)
 				return
